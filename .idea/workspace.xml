@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f898f819-7de0-4ac5-93ed-ab79a8e6c94a" name="Changes" comment="Generated Boilerplate project for Task2">
-      <change afterPath="$PROJECT_DIR$/Task2/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task2/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task2/app/src/main/java/com/example/task2/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Task2/app/src/main/java/com/example/task2/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
