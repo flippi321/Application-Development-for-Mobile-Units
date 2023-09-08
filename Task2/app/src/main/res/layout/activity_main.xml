@@ -1,28 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/random_number"
+    <Button
+        android:id="@+id/btn_generate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
-        android:gravity="center_horizontal"
-        android:text="Press the button to Generate"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/generate_random_number"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/random_number"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:contentDescription="Button to generate a random number"
-        android:onClick="onClickGenerateRandomNumber"
-        android:text="Generate!" />
+        android:layout_centerInParent="true"
+        android:text="Generate Random Number"
+        android:onClick="onClickGenerateRandomNumber"/>
 
 </RelativeLayout>
