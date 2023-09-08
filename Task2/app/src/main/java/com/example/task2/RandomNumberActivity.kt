@@ -10,7 +10,7 @@ class RandomNumberActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_random_number)
 
-        val maxValue = intent.getIntExtra("maxValue", 100)
+        val maxValue = intent.getIntExtra("maxValue", 1)
         val generatedNumber = (0..maxValue).random()
 
         val textView = findViewById<TextView>(R.id.random_number)
