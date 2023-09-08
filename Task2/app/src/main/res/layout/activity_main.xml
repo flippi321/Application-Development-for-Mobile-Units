@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:contentDescription="Button to generate a random number"
-        android:onClick="onClickStartChangeFlagActivity"
+        android:onClick="onClickGenerateRandomNumber"
         android:text="Generate!" />
 
 </RelativeLayout>
