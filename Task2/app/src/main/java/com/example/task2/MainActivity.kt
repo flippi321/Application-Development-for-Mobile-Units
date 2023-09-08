@@ -1,47 +1,33 @@
 package com.example.task2
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
+import android.util.Log
+import android.view.View
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.task2.ui.theme.Task2Theme
-import java.util.Random
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
+    private val maxNumber = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        val value = intent.getIntExtra("random_number", 100)
-        val textView = TextView(this)
-        textView.text = "Tilfeldig nummer: $value"
+        // Start Randomizer activity
+        val intent = Intent("RandomNumberActivity")
 
-        setContentView(textView)
+        /* Removed because I don't know wtf this is
+        * intent.putExtra("flag", flagValue)
+        */
+
+        //startActivityForResult(intent, maxNumber)
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Composable
-fun RandomNumber(context: Context, maxSize: Int) {
-    val value = (0..maxSize).random()
-    val intent = Intent(context, MainActivity::class.java)
-    intent.putExtra("random_number", value)
-    Toast.makeText(context, "Intent returned: $value", Toast.LENGTH_LONG).show()
-    context.startActivity(intent)
+    fun onClickGenerateRandomNumber(v: View?){
+        Log.w("Warning", "Test")
+    }
 }
