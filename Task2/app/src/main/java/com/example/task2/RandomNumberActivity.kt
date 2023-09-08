@@ -7,7 +7,6 @@ import android.widget.TextView
 
 class RandomNumberActivity : Activity() {
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_random_number)
@@ -16,6 +15,7 @@ class RandomNumberActivity : Activity() {
         val generatedNumber = (0..maxValue).random()
 
         val textView = findViewById<TextView>(R.id.random_number)
-        textView.text = "Generert tall: $generatedNumber"
+        val result = "Generert tall: $generatedNumber"
+        textView.text = result
     }
 }
