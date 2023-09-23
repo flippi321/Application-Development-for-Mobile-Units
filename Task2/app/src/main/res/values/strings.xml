@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Task2</string>
+    <string name="add">Adder</string>
+    <string name="multiply">Multipliser</string>
+    <string name="answer">Svar:</string>
+    <string name="correct">Riktig!</string>
+    <string name="incorrect">Feil. Riktig svar er:</string>
+    <string name="generate_random_number">Generate Random Number</string>
 </resources>
