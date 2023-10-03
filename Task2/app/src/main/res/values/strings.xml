@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Task2</string>
-    <string name="add">Adder</string>
-    <string name="multiply">Multipliser</string>
     <string name="answer">Svar:</string>
     <string name="correct">Riktig!</string>
     <string name="incorrect">Feil. Riktig svar er:</string>
     <string name="generate_random_number">Generate Random Number</string>
+    <string name="enter_second_number">Enter second number</string>
+    <string name="enter_first_number">Enter first number</string>
+    <string name="calculate">Calculate</string>
+    <string-array name="dropdown_values">
+        <item>Adder</item>
+        <item>Multipliser</item>
+    </string-array>
 </resources>
