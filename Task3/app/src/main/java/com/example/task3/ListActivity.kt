@@ -1,14 +1,19 @@
-import androidx.appcompat.app.AppCompatActivity
+package com.example.task3;
 
-class ListActivity : AppCompatActivity() {
+import Venn
+import android.app.Activity
+import android.os.Bundle
+import android.widget.ListView
+
+class ListActivity : Activity() {
 
     private lateinit var venner: MutableList<Venn>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_liste)
+        setContentView(R.layout.activity_list)
 
-        venner = intent.getSerializableExtra("venner") as MutableList<Venn>
+        venner = intent.getParcelableArrayListExtra<Venn>("venner")!!
         val listView = findViewById<ListView>(R.id.listVenner)
         val adapter = VennAdapter(this, venner)
         listView.adapter = adapter
