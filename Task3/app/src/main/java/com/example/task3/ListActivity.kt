@@ -1,6 +1,5 @@
 package com.example.task3;
 
-import Venn
 import android.app.Activity
 import android.os.Bundle
 import android.widget.ListView
@@ -13,7 +12,7 @@ class ListActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        venner = intent.getParcelableArrayListExtra<Venn>("venner")!!
+        venner = intent.getParcelableArrayListExtra("venner")!!
         val listView = findViewById<ListView>(R.id.listVenner)
         val adapter = VennAdapter(this, venner)
         listView.adapter = adapter
