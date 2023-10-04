@@ -3,12 +3,11 @@
     <string name="answer">Svar:</string>
     <string name="correct">Riktig!</string>
     <string name="incorrect">Feil. Riktig svar er:</string>
-    <string name="generate_random_number">Generate Random Number</string>
-    <string name="enter_second_number">Enter second number</string>
-    <string name="enter_first_number">Enter first number</string>
-    <string name="calculate">Calculate</string>
-    <string-array name="dropdown_values">
-        <item>Adder</item>
-        <item>Multipliser</item>
-    </string-array>
+    <string name="generate_random_number">Generer tilfeldig nummer</string>
+    <string name="upperLimit">50</string>
+    <string name="add">Adder</string>
+    <string name="multiply">Multipliser</string>
+    <string name="try_again">Prøv igjen!</string>
+    <string name="wrong_the_correct_answer_is">"Feil svar, riktig svar er: "</string>
+    <string name="number">"Nummer: "</string>
 </resources>
