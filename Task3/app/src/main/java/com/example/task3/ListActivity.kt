@@ -36,7 +36,7 @@ class ListActivity : Activity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
+        if (requestCode == 69 && resultCode == Activity.RESULT_OK) {
             val newVenn = data?.getParcelableExtra<Venn>("newVenn")
             if (newVenn != null) {
                 venner.add(newVenn)
