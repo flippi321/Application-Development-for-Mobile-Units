@@ -13,7 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.title = "IMbD"
         showSolutions(false)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.imageFragmentContainer, ImageFragment())
+            .replace(R.id.movieListFragmentContainer, MovieListFragment())
+            .commit()
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menu.add(0, 0, 0, "Forrige")
