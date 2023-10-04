@@ -1,6 +1,5 @@
 package com.example.task3
 
-import Venn
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
