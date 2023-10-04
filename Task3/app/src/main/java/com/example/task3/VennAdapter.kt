@@ -1,6 +1,5 @@
 package com.example.task3
 
-import Venn
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
