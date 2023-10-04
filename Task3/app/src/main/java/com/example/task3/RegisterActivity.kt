@@ -1,5 +1,6 @@
 package com.example.task3
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -17,17 +18,24 @@ class RegisterActivity : AppCompatActivity() {
         val edtNavn = findViewById<EditText>(R.id.edtNavn)
         val edtDato = findViewById<EditText>(R.id.edtDato)
 
-        // Create an instance of Venn
+        // Check if there's a Venn passed in the intent
+        val selectedVenn = intent.getParcelableExtra<Venn>("selectedVenn")
+        if (selectedVenn != null) {
+            edtNavn.setText(selectedVenn.navn)
+            edtDato.setText(selectedVenn.fødselsdato)
+        }
+
         btnRegistrer.setOnClickListener {
             val navn = edtNavn.text.toString()
             val dato = edtDato.text.toString()
 
             venner.add(Venn(navn, dato))
 
-            // Navigate to ListActivity and pass the list
-            val intent = Intent(this, ListActivity::class.java)
-            intent.putParcelableArrayListExtra("venner", ArrayList(venner))
-            startActivity(intent)
+            // Set the result for ListActivity and finish this activity
+            val resultIntent = Intent()
+            resultIntent.putExtra("newVenn", Venn(navn, dato))
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()
         }
     }
 }
