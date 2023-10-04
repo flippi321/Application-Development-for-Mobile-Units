@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "IMbD"
         showSolutions(false)
 
+        // TODO REPLACE WITH DYNAMIC
         supportFragmentManager.beginTransaction()
             .replace(R.id.imageFragmentContainer, ImageFragment())
             .replace(R.id.movieListFragmentContainer, MovieListFragment())
