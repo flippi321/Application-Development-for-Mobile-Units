@@ -1,17 +1,18 @@
 package com.example.task4
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.task4.ui.theme.Task4Theme
 
@@ -20,43 +21,59 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Task4Theme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Column {
+                        MyAppBar()
+                        Greeting("Android")
+                    }
                 }
             }
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menu.add(0, 0, 0,
-            "Fasit").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-        menu.add(0, 1, 0,
-            "Beskrivelse").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
-        menu.add(0, 2, 0,
-            "Innstillinger").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
-        menu.add(0, 3, 0,
-            "Avslutt").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            0 -> Toast.makeText(this, "There is no Fasit",
-                Toast.LENGTH_SHORT).show()
-            1 -> Toast.makeText(this, "Ganske selvbeskrivende",
-                Toast.LENGTH_SHORT).show()
-            2 -> Toast.makeText(this, "Du har nå akseptert alle Cookies :P",
-                Toast.LENGTH_SHORT).show()
-            3 -> finish()
-            else -> return false
-        }
-        return true
-    }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MyAppBar() {
+    var showMenu by remember { mutableStateOf(false) }
+    val context = LocalContext.current  // Capture the context outside the lambdas
+
+    TopAppBar(
+        title = { Text("My App") },
+        actions = {
+            IconButton(onClick = { /* Handle Fasit action here */ }) {
+                Text("Fasit")
+            }
+            IconButton(onClick = { showMenu = true }) {
+                Icon(Icons.Default.MoreVert, contentDescription = null)
+            }
+
+            DropdownMenu(
+                expanded = showMenu,
+                onDismissRequest = { showMenu = false }
+            ) {
+                Text("Beskrivelse", modifier = Modifier.clickable {
+                    Toast.makeText(context, "Ganske selvbeskrivende", Toast.LENGTH_SHORT).show()
+                    showMenu = false
+                })
+                Text("Innstillinger", modifier = Modifier.clickable {
+                    Toast.makeText(context, "Du har nå akseptert alle Cookies :P", Toast.LENGTH_SHORT).show()
+                    showMenu = false
+                })
+                Text("Avslutt", modifier = Modifier.clickable {
+                    Toast.makeText(context, "App will close", Toast.LENGTH_SHORT).show()
+                    showMenu = false
+                    // Implement exit function here
+                })
+            }
+        }
+    )
+}
+
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
