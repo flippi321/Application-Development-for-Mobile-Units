@@ -1,92 +1,49 @@
 package com.example.task4
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.task4.ui.theme.Task4Theme
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Task4Theme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Column {
-                        MyAppBar()
-                        Greeting("Android")
-                    }
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+        showSolutions(false)
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyAppBar() {
-    var showMenu by remember { mutableStateOf(false) }
-    val context = LocalContext.current  // Capture the context outside the lambdas
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menu.add(0, 0, 0,
+            "Fasit").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+        menu.add(0, 1, 0,
+            "Beskrivelse").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.add(0, 2, 0,
+            "Vis Fasit").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.add(0, 3, 0,
+            "Avslutt").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        return true
+    }
 
-    TopAppBar(
-        title = { Text("My App") },
-        actions = {
-            IconButton(onClick = { /* Handle Fasit action here */ }) {
-                Text("Fasit")
-            }
-            IconButton(onClick = { showMenu = true }) {
-                Icon(Icons.Default.MoreVert, contentDescription = null)
-            }
-
-            DropdownMenu(
-                expanded = showMenu,
-                onDismissRequest = { showMenu = false }
-            ) {
-                Text("Beskrivelse", modifier = Modifier.clickable {
-                    Toast.makeText(context, "Ganske selvbeskrivende", Toast.LENGTH_SHORT).show()
-                    showMenu = false
-                })
-                Text("Innstillinger", modifier = Modifier.clickable {
-                    Toast.makeText(context, "Du har nå akseptert alle Cookies :P", Toast.LENGTH_SHORT).show()
-                    showMenu = false
-                })
-                Text("Avslutt", modifier = Modifier.clickable {
-                    Toast.makeText(context, "App will close", Toast.LENGTH_SHORT).show()
-                    showMenu = false
-                    // Implement exit function here
-                })
-            }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            0 -> Toast.makeText(this, "Fasit valgt",
+                Toast.LENGTH_SHORT).show()
+            1 -> Toast.makeText(this, "Beskrivelse valgt",
+                Toast.LENGTH_SHORT).show()
+            2 -> showSolutions(true)
+            3 -> finish()
+            else -> return false
         }
-    )
-}
+        return true
+    }
 
-
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Task4Theme {
-        Greeting("Android")
+    private fun showSolutions(show: Boolean) {
+        if (show) {
+            Toast.makeText(this, "Livet og alts betydning er 42",
+                Toast.LENGTH_SHORT).show()
+        }
     }
 }
