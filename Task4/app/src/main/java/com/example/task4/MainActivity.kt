@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "IMbD"
         showSolutions(false)
 
+        val movies = createMovies()
+
         // TODO REPLACE WITH DYNAMIC
         supportFragmentManager.beginTransaction()
             .replace(R.id.imageFragmentContainer, ImageFragment())
             .replace(R.id.movieListFragmentContainer, MovieListFragment())
             .commit()
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menu.add(0, 0, 0, "Forrige")
@@ -38,6 +38,14 @@ class MainActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    private fun createMovies() : ArrayList<Movie>{
+        val movies = ArrayList<Movie>()
+        movies.add(Movie("Batman", "I am vengance", ""))
+        movies.add(Movie("Prestige", "I am actually watching Prestige this weekend", ""))
+        movies.add(Movie("Interstellar", "Space is cool", ""))
+        return movies
     }
 
     private fun showSolutions(show: Boolean) {
