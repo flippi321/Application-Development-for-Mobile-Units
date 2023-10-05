@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 data class Movie(
     val name: String,
     val description: String,
-    val image: String // Location of image
+    val image: String // Name of image this movie, found in res/drawable
 ) : Parcelable
