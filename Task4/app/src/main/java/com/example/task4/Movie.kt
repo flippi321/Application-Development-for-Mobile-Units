@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 data class Movie(
     val name: String,
     val description: String,
-    val image: String // This can be a URL or a file path, based on your requirement
+    val image: String // Location of image
 ) : Parcelable
