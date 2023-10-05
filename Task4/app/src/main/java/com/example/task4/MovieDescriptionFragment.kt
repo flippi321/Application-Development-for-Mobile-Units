@@ -27,7 +27,7 @@ class MovieDescriptionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_image, container, false)
+        val view = inflater.inflate(R.layout.fragment_movie_description, container, false)
         val imageView: ImageView = view.findViewById(R.id.imageView)
         val description: TextView = view.findViewById(R.id.description)
 
