@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    private var currentMovieIndex = 0 // Always start with the first movie in the list
+    private var currentMovieIndex = 0 // We always start on Batman
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +40,12 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
             0 -> {
-                // Forrige clicked, decrease the index
+                // When forrige is pressed we go to the previous movie
                 currentMovieIndex--
                 if (currentMovieIndex < 0) currentMovieIndex = movies.size - 1  // Handle underflow.
             }
             1 -> {
-                // Neste clicked, increase the index
+                // When forrige is pressed we go to the next movie
                 currentMovieIndex++
                 if (currentMovieIndex >= movies.size) currentMovieIndex = 0  // Handle overflow.
             }
@@ -90,7 +90,6 @@ class MainActivity : AppCompatActivity() {
             "dunkirk"))
         return movies
     }
-
 
     private fun showSolutions(show: Boolean) {
         if (show) {
