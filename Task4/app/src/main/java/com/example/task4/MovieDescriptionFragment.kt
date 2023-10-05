@@ -1,5 +1,6 @@
 package com.example.task4
 
+import Movie
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,17 @@ import android.widget.TextView
 
 class MovieDescriptionFragment : Fragment() {
 
+    companion object {
+        private const val MOVIE_DESCRIPTION_KEY = "movieDescription"
+
+        fun newInstance(movie: Movie): MovieDescriptionFragment {
+            val fragment = MovieDescriptionFragment()
+            val bundle = Bundle()
+            bundle.putParcelable(MOVIE_DESCRIPTION_KEY, movie)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -18,10 +30,14 @@ class MovieDescriptionFragment : Fragment() {
         val imageView: ImageView = view.findViewById(R.id.imageView)
         val description: TextView = view.findViewById(R.id.description)
 
-        // TODO FIX
+        val movie: Movie? = arguments?.getParcelable(MOVIE_DESCRIPTION_KEY)
+
+        // TODO use image from Movie object instead of batman
         imageView.setImageResource(R.drawable.batman)
-        description.text = getString(R.string.some_description)
+
+        description.text = movie?.description ?: "Description not available"
 
         return view
     }
+
 }
