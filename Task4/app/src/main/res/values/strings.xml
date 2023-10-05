@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Task4</string>
     <string name="some_description">Movie Description here</string>
+    <string name="description">Description</string>
+    <string name="the_image_of_a_movie">The image of a movie</string>
     <string-array name="movies">
         <item>Batman</item>
         <item>Spaceballs</item>
