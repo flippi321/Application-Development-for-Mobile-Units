@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import android.widget.TextView
 
-class ImageFragment : Fragment() {
+class MovieDescriptionFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

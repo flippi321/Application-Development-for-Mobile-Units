@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val movieListFragment = MovieListFragment.newInstance(movies)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.imageFragmentContainer, ImageFragment())
+            .replace(R.id.imageFragmentContainer, MovieDescriptionFragment())
             .replace(R.id.movieListFragmentContainer, movieListFragment)
             .commit()
     }
