@@ -64,9 +64,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun createMovies() : ArrayList<Movie>{
         val movies = ArrayList<Movie>()
-        movies.add(Movie("Batman", "I am vengance", "batman"))
-        movies.add(Movie("Prestige", "I am actually watching Prestige this weekend", "prestige"))
-        movies.add(Movie("Interstellar", "Space is cool", "interstellar"))
+        movies.add(Movie(
+            "Batman",
+            "The plot follows the vigilante Batman, police lieutenant James Gordon, and district attorney Harvey Dent, who form an alliance to dismantle organized crime in Gotham City. Their efforts are derailed by the Joker, an anarchistic mastermind who seeks to test how far the Batman will go to save the city from chaos.",
+            "batman"))
+        movies.add(Movie(
+            "Prestige",
+            "After a tragic accident, two stage magicians in 1890s London engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+            "prestige"))
+        movies.add(Movie(
+            "Interstellar",
+            "Set in a dystopian future where humanity is embroiled in a catastrophic blight and famine, the film follows a group of astronauts who travel through a wormhole near Saturn in search of a new home for humankind.",
+            "interstellar"))
         return movies
     }
 
