@@ -10,7 +10,7 @@
     <string name="try_again">Prøv igjen!</string>
     <string name="wrong_the_correct_answer_is">"Feil svar, riktig svar er: "</string>
     <string name="number">"Nummer: "</string>
-    <string name="max_value_generated">Max value generated:</string>
+    <string name="max_value_generated">Størst mulig tilfeldig tall:</string>
     <string name="tall_2_5">Tall 2: 5</string>
     <string name="tall_1_3">Tall 1: 3</string>
 </resources>
