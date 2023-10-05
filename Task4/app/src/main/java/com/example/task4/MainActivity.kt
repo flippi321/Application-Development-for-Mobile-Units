@@ -18,9 +18,10 @@ class MainActivity : AppCompatActivity() {
         val movies = createMovies()
 
         val movieListFragment = MovieListFragment.newInstance(movies)
+        val movieDescriptionFragment = MovieDescriptionFragment.newInstance(movies[0])
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.imageFragmentContainer, MovieDescriptionFragment())
+            .replace(R.id.imageFragmentContainer, movieDescriptionFragment)
             .replace(R.id.movieListFragmentContainer, movieListFragment)
             .commit()
     }
