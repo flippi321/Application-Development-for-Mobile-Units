@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun createMovies() : ArrayList<Movie>{
         val movies = ArrayList<Movie>()
-        movies.add(Movie("Batman", "I am vengance", ""))
-        movies.add(Movie("Prestige", "I am actually watching Prestige this weekend", ""))
-        movies.add(Movie("Interstellar", "Space is cool", ""))
+        movies.add(Movie("Batman", "I am vengance", "batman"))
+        movies.add(Movie("Prestige", "I am actually watching Prestige this weekend", "prestige"))
+        movies.add(Movie("Interstellar", "Space is cool", "interstellar"))
         return movies
     }
 
