@@ -74,7 +74,7 @@ class Activity2B : Activity() {
             .setPositiveButton(getString(R.string.generate_random_number)) { _, _ ->
                 upperLimit = Integer.parseInt(upperLimitView?.text.toString())
                 val intent = Intent(this, RandomNumberActivity::class.java)
-                intent.putExtra("upperLimit", upperLimit)
+                intent.putExtra("maxValue", upperLimit)
                 startActivityForResult(intent, 1001) // Use a request code, e.g., 1001
             }
             .setNegativeButton(getString(R.string.try_again), null)

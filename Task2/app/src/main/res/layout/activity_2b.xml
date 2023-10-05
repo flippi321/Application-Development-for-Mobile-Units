@@ -13,19 +13,20 @@
         android:layout_width="370dp"
         android:layout_height="41dp"
         android:layout_marginTop="24dp"
-        android:text="Tall 1: 3" />
+        android:text="@string/tall_1_3" />
 
     <TextView
         android:id="@+id/display_number2"
         android:layout_width="371dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
-        android:text="Tall 2: 5" />
+        android:text="@string/tall_2_5" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="366dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
+        android:textSize="20sp"
         android:text="@string/answer" />
 
     <EditText
@@ -40,8 +41,9 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="366dp"
-        android:layout_height="20dp"
-        android:text="@string/upperLimit" />
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:text="@string/max_value_generated" />
 
     <EditText
         android:id="@+id/upperlimit"
