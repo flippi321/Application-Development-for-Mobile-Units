@@ -1,5 +1,6 @@
 package com.example.task4
 
+import Movie
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,10 +17,11 @@ class MainActivity : AppCompatActivity() {
 
         val movies = createMovies()
 
-        // TODO REPLACE WITH DYNAMIC
+        val movieListFragment = MovieListFragment.newInstance(movies)
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.imageFragmentContainer, ImageFragment())
-            .replace(R.id.movieListFragmentContainer, MovieListFragment())
+            .replace(R.id.movieListFragmentContainer, movieListFragment)
             .commit()
     }
 
