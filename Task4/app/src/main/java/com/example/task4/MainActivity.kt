@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    private var currentMovieIndex = 0 // Always start with the first movie in the list
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val movies = createMovies()
 
         val movieListFragment = MovieListFragment.newInstance(movies)
-        val movieDescriptionFragment = MovieDescriptionFragment.newInstance(movies[0])
+        val movieDescriptionFragment = MovieDescriptionFragment.newInstance(movies[currentMovieIndex])
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.imageFragmentContainer, movieDescriptionFragment)
@@ -35,13 +36,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val movies = createMovies()  // Retrieve the movie list.
+
         when (item.itemId) {
-            0 -> Toast.makeText(this, "Forrige clicked", Toast.LENGTH_SHORT).show()
-            1 -> Toast.makeText(this, "Neste clicked", Toast.LENGTH_SHORT).show()
+            0 -> {
+                // Forrige clicked, decrease the index
+                currentMovieIndex--
+                if (currentMovieIndex < 0) currentMovieIndex = movies.size - 1  // Handle underflow.
+            }
+            1 -> {
+                // Neste clicked, increase the index
+                currentMovieIndex++
+                if (currentMovieIndex >= movies.size) currentMovieIndex = 0  // Handle overflow.
+            }
             else -> return super.onOptionsItemSelected(item)
         }
+
+        // Replace the movieDescriptionFragment with the new movie based on currentMovieIndex.
+        val newMovieDescriptionFragment = MovieDescriptionFragment.newInstance(movies[currentMovieIndex])
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.imageFragmentContainer, newMovieDescriptionFragment)
+            .commit()
+
         return true
     }
+
 
     private fun createMovies() : ArrayList<Movie>{
         val movies = ArrayList<Movie>()
