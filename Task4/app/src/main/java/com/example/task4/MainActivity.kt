@@ -76,8 +76,21 @@ class MainActivity : AppCompatActivity() {
             "Interstellar",
             "Set in a dystopian future where humanity is embroiled in a catastrophic blight and famine, the film follows a group of astronauts who travel through a wormhole near Saturn in search of a new home for humankind.",
             "interstellar"))
+        movies.add(Movie(
+            "Inception",
+            "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state. Cobb's rare ability has made him a coveted player in the world of corporate espionage, but it has also cost him everything he loves.",
+            "inception"))
+        movies.add(Movie(
+            "Memento",
+            "The story of Leonard Shelby, a man with anterograde amnesia, which prevents him from forming new memories. He uses notes and tattoos to hunt for the man he thinks killed his wife.",
+            "memento"))
+        movies.add(Movie(
+            "Dunkirk",
+            "The story of the miraculous evacuation of Allied soldiers during WWII from the beaches and harbour of Dunkirk, France, between 26 May and 4 June 1940, after they were cut off and surrounded by the German army.",
+            "dunkirk"))
         return movies
     }
+
 
     private fun showSolutions(show: Boolean) {
         if (show) {
