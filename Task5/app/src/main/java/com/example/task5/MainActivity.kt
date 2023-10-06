@@ -10,18 +10,23 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 
 const val URL = "https://bigdata.idi.ntnu.no/mobil/tallspill.jsp"
 
 class MainActivity : AppCompatActivity() {
     private val network: HttpWrapper = HttpWrapper(URL)
 
+    private var correctAnswer = "<X>, du har vunnet 100 kr som kommer inn på ditt kort <Y>"
+    private var outOfLives1 = "Tallet <X> er for stort! Beklager ingen flere sjanser, du må starte på nytt (registrer kortnummer og navn)"
+    private var outOfLives2 = "Tallet <X> er for lite! Beklager ingen flere sjanser, du må starte på nytt (registrer kortnummer og navn)"
+    private val outOfLives3 = "Beklager ingen flere sjanser, du må starte på nytt (registrer kortnummer og navn)"
+
     private lateinit var nameEditText: EditText
     private lateinit var cardNumberEditText: EditText
     private lateinit var guessEditText: EditText
     private lateinit var submitButton: Button
     private lateinit var resultTextView: TextView
+    private lateinit var tryAgainButton: Button
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         guessEditText = findViewById(R.id.guessEditText)
         submitButton = findViewById(R.id.submitButton)
         resultTextView = findViewById(R.id.result)
+        tryAgainButton = findViewById(R.id.tryAgainButton)
 
         submitButton.setOnClickListener {
             if (nameEditText.isEnabled && cardNumberEditText.isEnabled) {
@@ -39,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             } else {
                 performRequest(HTTP.GET, sendNumber())
             }
+        }
+
+        tryAgainButton.setOnClickListener {
+            resetGame()
         }
     }
 
@@ -48,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         nameEditText.isEnabled = false
         cardNumberEditText.isEnabled = false
+        guessEditText.isEnabled = true
+
+        correctAnswer = "$firstName, du har vunnet 100 kr som kommer inn på ditt kort $cardNumber";
 
         return mapOf(
             "navn" to firstName,
@@ -58,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     private fun sendNumber(): Map<String, String> {
         val number = guessEditText.text.toString()
 
+        outOfLives1 = "Tallet $number er for stort! Beklager ingen flere sjanser, du må starte på nytt (registrer kortnummer og navn)"
         return mapOf(
             "tall" to number
         )
@@ -80,19 +94,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun resetGame() {
         nameEditText.isEnabled = true
         cardNumberEditText.isEnabled = true
-        guessEditText.isEnabled = true
+        guessEditText.isEnabled = false
         submitButton.isEnabled = true
         tryAgainButton.isEnabled = false
 
         guessEditText.setText("")
-        resultTextView.text = "@string/result_will_be_shown_here"
+        resultTextView.text = getString(R.string.result_will_be_shown_here)
+    }
+
+    // Method to fix the input from the server which is badly formatted
+    private fun cleanResponse(response: String?): String {
+        return response?.replace("\nnull", "") ?: ""
+    }
+
+    private fun isFinished(response: String) : Boolean{
+        return (response.trim() == correctAnswer.trim()
+                || response.trim() == outOfLives1.trim()
+                || response.trim() == outOfLives2.trim()
+                || response.trim() == outOfLives3.trim())
     }
 
     private fun setResult(response: String?) {
-        resultTextView.text = response
+        val fixedResponse = cleanResponse(response)
+        resultTextView.text = fixedResponse
+        tryAgainButton.isEnabled = true
+
+        // If we are correct or out of lives we only let the user press try again
+        if (isFinished(fixedResponse)) {
+            guessEditText.isEnabled = false
+            submitButton.isEnabled = false
+        }
     }
 }
