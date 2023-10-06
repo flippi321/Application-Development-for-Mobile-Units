@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Task5</string>
+    <string name="result_will_be_shown_here">Result will be shown here...</string>
 </resources>
