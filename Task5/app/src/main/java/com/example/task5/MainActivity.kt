@@ -74,6 +74,8 @@ class MainActivity : AppCompatActivity() {
         val number = guessEditText.text.toString()
 
         outOfLives1 = "Tallet $number er for stort! Beklager ingen flere sjanser, du må starte på nytt (registrer kortnummer og navn)"
+        outOfLives2 = "Tallet $number er for lite! Beklager ingen flere sjanser, du må starte på nytt (registrer kortnummer og navn)"
+
         return mapOf(
             "tall" to number
         )
