@@ -13,7 +13,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-const val URL = "http://bigdata.idi.ntnu.no/mobil/ekko.jsp"
+const val URL = "https://bigdata.idi.ntnu.no/mobil/ekko.jsp"
 const val URL_JSON = "https://simplifiedcoding.net/demos/marvel/"
 class MainActivity : AppCompatActivity() {
     private val network: HttpWrapper = HttpWrapper(URL)
