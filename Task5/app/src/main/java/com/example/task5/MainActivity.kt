@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             if (nameEditText.isEnabled && cardNumberEditText.isEnabled) {
-                performRequest(HTTP.GET, requestParameters())
+                performRequest(requestParameters())
             } else {
-                performRequest(HTTP.GET, sendNumber())
+                performRequest(sendNumber())
             }
         }
 
@@ -78,14 +78,10 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun performRequest(typeOfRequest: HTTP, parameterList: Map<String, String>) {
+    private fun performRequest(parameterList: Map<String, String>) {
         CoroutineScope(IO).launch {
             val response: String = try {
-                when (typeOfRequest) {
-                    HTTP.GET -> network.get(parameterList)
-                    HTTP.POST -> TODO()
-                    HTTP.GET_WITH_HEADER -> TODO()
-                }
+                network.get(parameterList)
             } catch (e: Exception) {
                 Log.e("performRequest()", e.message!!)
                 e.toString()
@@ -95,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun resetGame() {
         nameEditText.isEnabled = true
         cardNumberEditText.isEnabled = true
