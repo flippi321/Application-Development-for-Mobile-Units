@@ -7,6 +7,32 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter name" />
+
+    <EditText
+        android:id="@+id/cardNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_card_number"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/guessEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_guess"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit" />
+
     <TextView
         android:id="@+id/result"
         android:layout_width="match_parent"
