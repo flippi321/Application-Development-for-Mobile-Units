@@ -13,8 +13,8 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
-const val URL = "https://bigdata.idi.ntnu.no/mobil/ekko.jsp"
-const val URL_JSON = "https://simplifiedcoding.net/demos/marvel/"
+const val URL = "https://bigdata.idi.ntnu.no/mobil/tallspill.jsp"
+
 class MainActivity : AppCompatActivity() {
     private val network: HttpWrapper = HttpWrapper(URL)
     //private val network: HttpWrapper = HttpWrapper(URL_JSON)
@@ -39,12 +39,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
     private fun requestParameters(): Map<String, String> {
-        val firstName = "oeystein Marius"
-        val lastName = "Knaus"
+        val firstName = "Test"
+        val cardNumber = "123"
 
         return mapOf(
-            "fornavn" to firstName,
-            "etternavn" to lastName,
+            "navn" to firstName,
+            "kortnummer" to cardNumber,
         )
     }
     private fun performRequest(typeOfRequest: HTTP, parameterList:
