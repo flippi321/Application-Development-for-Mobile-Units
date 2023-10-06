@@ -87,7 +87,14 @@ class MainActivity : AppCompatActivity() {
                 e.toString()
             }
             MainScope().launch {
-                setResult(response)
+                // If we incorrectly format Name and Card number
+                if(response == "Feil, du må registrer navn og kortnummer før du kan tippe (via start nytt spill)"){
+                    resetGame()
+                }
+                // If not then we can start guessing
+                else {
+                    setResult(response)
+                }
             }
         }
     }
