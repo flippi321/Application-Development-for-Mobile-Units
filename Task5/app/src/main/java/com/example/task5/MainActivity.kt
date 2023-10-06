@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         nameEditText.isEnabled = false
         cardNumberEditText.isEnabled = false
         guessEditText.isEnabled = true
+        guessEditText.setText("")
         guessEditText.hint = getString(R.string.enter_your_guess)
 
         correctAnswer = "$firstName, du har vunnet 100 kr som kommer inn på ditt kort $cardNumber"
