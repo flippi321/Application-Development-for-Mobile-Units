@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menu.add("GET").setShowAsAction(SHOW_AS_ACTION_ALWAYS)
-        menu.add("POST").setShowAsAction(SHOW_AS_ACTION_ALWAYS)
+        menu.add("Try new").setShowAsAction(SHOW_AS_ACTION_ALWAYS)
+        menu.add("Guess").setShowAsAction(SHOW_AS_ACTION_ALWAYS)
         menu.add("GET (header)").setShowAsAction(SHOW_AS_ACTION_ALWAYS)
         return super.onCreateOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.title) {
-            "GET" -> performRequest(HTTP.GET, requestParameters())
-            "POST" -> performRequest(HTTP.POST, requestParameters())
+            "Try new" -> performRequest(HTTP.GET, requestParameters())
+            "Guess" -> performRequest(HTTP.GET, sendNumber())
             "GET (header)" -> performRequest(HTTP.GET_WITH_HEADER,
                 requestParameters())
             else -> return false
@@ -45,6 +45,13 @@ class MainActivity : AppCompatActivity() {
         return mapOf(
             "navn" to firstName,
             "kortnummer" to cardNumber,
+        )
+    }
+    private fun sendNumber(): Map<String, String> {
+        val number = "5"
+
+        return mapOf(
+            "tall" to number
         )
     }
     private fun performRequest(typeOfRequest: HTTP, parameterList:
