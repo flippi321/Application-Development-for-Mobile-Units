@@ -81,6 +81,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun resetGame() {
+        nameEditText.isEnabled = true
+        cardNumberEditText.isEnabled = true
+        guessEditText.isEnabled = true
+        submitButton.isEnabled = true
+        tryAgainButton.isEnabled = false
+
+        guessEditText.setText("")
+        resultTextView.text = "@string/result_will_be_shown_here"
+    }
+
     private fun setResult(response: String?) {
         resultTextView.text = response
     }

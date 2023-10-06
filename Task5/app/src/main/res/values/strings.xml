@@ -4,4 +4,6 @@
     <string name="submit">Submit</string>
     <string name="enter_card_number">Enter card number</string>
     <string name="enter_your_guess">Enter your guess</string>
+    <string name="try_again">Try Again!</string>
+    <string name="enter_name">Enter name</string>
 </resources>
