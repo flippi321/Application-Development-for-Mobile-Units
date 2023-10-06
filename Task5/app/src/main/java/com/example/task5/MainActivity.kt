@@ -59,8 +59,9 @@ class MainActivity : AppCompatActivity() {
         nameEditText.isEnabled = false
         cardNumberEditText.isEnabled = false
         guessEditText.isEnabled = true
+        guessEditText.hint = getString(R.string.enter_your_guess)
 
-        correctAnswer = "$firstName, du har vunnet 100 kr som kommer inn på ditt kort $cardNumber";
+        correctAnswer = "$firstName, du har vunnet 100 kr som kommer inn på ditt kort $cardNumber"
 
         return mapOf(
             "navn" to firstName,
@@ -101,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         submitButton.isEnabled = true
         tryAgainButton.isEnabled = false
 
-        guessEditText.setText("")
+        guessEditText.setText(getString(R.string.enter_information_first))
         resultTextView.text = getString(R.string.result_will_be_shown_here)
     }
 
