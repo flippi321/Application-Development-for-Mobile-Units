@@ -24,7 +24,7 @@
         android:id="@+id/guessEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/enter_your_guess"
+        android:hint="@string/enter_information_first"
         android:inputType="number"
         android:enabled="false" />
 
