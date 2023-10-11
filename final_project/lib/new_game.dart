@@ -94,7 +94,14 @@ class NewGamePage extends StatelessWidget {
   }
 
   void _loadGame(BuildContext context, Difficulty difficulty) {
+    if (difficulty == Difficulty.easy){
+      
+    } else if (difficulty == Difficulty.medium){
+      
+    } else if (difficulty == Difficulty.hard){
+      
+    }
     // TODO Load correctly
-    print('Loading game with difficulty: $difficulty');
+    print('Loading game with difficulty: ${difficulty.name}');
   }
 }
