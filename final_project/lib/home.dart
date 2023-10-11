@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soduku_app/new_game.dart';
 
 class SudokuHomePage extends StatelessWidget {
   const SudokuHomePage({super.key});
@@ -39,11 +40,13 @@ class SudokuHomePage extends StatelessWidget {
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
-                  // TODO implement "New Game" logic here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NewGamePage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black, backgroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 child: const Text('New Game'),
