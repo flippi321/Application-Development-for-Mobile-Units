@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class NewGamePage extends StatelessWidget {
@@ -6,7 +8,19 @@ class NewGamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("New Game")),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: const Text("New Game"),
+        backgroundColor: Colors.transparent,
+        flexibleSpace: ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10), // Blur effect
+            child: Container(
+              color: Colors.black.withOpacity(0.15), // Slight backround color to the appbar
+            ),
+          ),
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -33,8 +47,10 @@ class NewGamePage extends StatelessWidget {
                   _loadGame(context, 'easy.csv');
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, backgroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 child: const Text('Easy'),
               ),
@@ -44,8 +60,10 @@ class NewGamePage extends StatelessWidget {
                   _loadGame(context, 'medium.csv');
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, backgroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 child: const Text('Medium'),
               ),
@@ -55,8 +73,10 @@ class NewGamePage extends StatelessWidget {
                   _loadGame(context, 'hard.csv');
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, backgroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 child: const Text('Hard'),
               ),
