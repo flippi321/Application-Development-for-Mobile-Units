@@ -2,6 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+enum Difficulty{
+    easy,
+    medium,
+    hard
+}
+
 class NewGamePage extends StatelessWidget {
   const NewGamePage({super.key});
 
@@ -44,7 +50,7 @@ class NewGamePage extends StatelessWidget {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  _loadGame(context, 'easy.csv');
+                  _loadGame(context, Difficulty.easy);
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
@@ -57,7 +63,7 @@ class NewGamePage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _loadGame(context, 'medium.csv');
+                  _loadGame(context, Difficulty.medium);
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
@@ -70,7 +76,7 @@ class NewGamePage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _loadGame(context, 'hard.csv');
+                  _loadGame(context, Difficulty.hard);
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
@@ -87,8 +93,8 @@ class NewGamePage extends StatelessWidget {
     );
   }
 
-  void _loadGame(BuildContext context, String difficultyCsv) {
-    // TODO: Connect to soduku.dart and load the game using the provided csv file
-    print('Loading game with difficulty: $difficultyCsv');
+  void _loadGame(BuildContext context, Difficulty difficulty) {
+    // TODO Load correctly
+    print('Loading game with difficulty: $difficulty');
   }
 }
