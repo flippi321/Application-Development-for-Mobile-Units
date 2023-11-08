@@ -1,5 +1,6 @@
 package com.example.task7
 
+import androidx.compose.ui.text.toUpperCase
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -28,6 +29,6 @@ data class Movie(
     }
 
     override fun toString(): String {
-        return "$name\n Director: $director \n\nActors:\n${actors.joinToString("\n")}"
+        return "\n${name.uppercase()}\n\n Director: $director \n\nActors:\n - ${actors.joinToString("\n - ")}\n"
     }
 }
