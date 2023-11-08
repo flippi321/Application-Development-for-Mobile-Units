@@ -1,6 +1,7 @@
 package com.example.task7
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,18 +18,24 @@ class MainActivity : Activity() {
     private lateinit var moviesList: MutableList<Movie>
     private lateinit var adapter: ArrayAdapter<Movie>
     private lateinit var listView: ListView
+    private lateinit var mainLayout: View // Add this line to hold the main layout reference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val listView = findViewById<ListView>(R.id.listView)
         val btnSort = findViewById<Button>(R.id.btnSort)
+        val btnBackground = findViewById<Button>(R.id.btnBackground)
+        mainLayout = findViewById<View>(R.id.mainLayout)
 
         btnSort.setOnClickListener {
             showSortMenu(btnSort)
+        }
+
+        btnBackground.setOnClickListener {
+            showBackgroundColorMenu(btnBackground)
         }
 
         // Read and parse the movies from the JSON file
@@ -73,6 +80,22 @@ class MainActivity : Activity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showBackgroundColorMenu(anchor: View) {
+        val popup = PopupMenu(this, anchor)
+        popup.menu.add(Menu.NONE, 1, Menu.NONE, "White")
+        popup.menu.add(Menu.NONE, 2, Menu.NONE, "Yellow")
+        popup.menu.add(Menu.NONE, 3, Menu.NONE, "Red")
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                1 -> mainLayout.setBackgroundColor(Color.WHITE)
+                2 -> mainLayout.setBackgroundColor(Color.YELLOW)
+                3 -> mainLayout.setBackgroundColor(Color.RED)
+            }
+            true
+        }
+        popup.show()
     }
 
     private fun sortMoviesByCondition(condition: (Movie) -> Boolean) {
