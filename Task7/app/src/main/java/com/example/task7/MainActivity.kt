@@ -1,46 +1,27 @@
 package com.example.task7
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.task7.ui.theme.Task7Theme
+import android.widget.ArrayAdapter
+import android.widget.ListView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            Task7Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
-    }
-}
+        setContentView(R.layout.activity_main)
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        val listView = findViewById<ListView>(R.id.listView)
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Task7Theme {
-        Greeting("Android")
+        // Sample list of movies
+        val moviesList = listOf(
+            Movie("Inception", "Christopher Nolan", listOf("Leonardo DiCaprio", "Joseph Gordon-Levitt")),
+            Movie("The Matrix", "Lana Wachowski, Lilly Wachowski", listOf("Keanu Reeves", "Laurence Fishburne")),
+            // Add more movies here
+        )
+
+        // Adapter to display the movies in the ListView
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, moviesList)
+        listView.adapter = adapter
     }
 }
