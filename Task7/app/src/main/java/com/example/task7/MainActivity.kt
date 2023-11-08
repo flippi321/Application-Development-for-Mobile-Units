@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import org.json.JSONArray
+import java.io.BufferedReader
 import java.io.IOException
 
 class MainActivity : Activity() {
@@ -24,12 +25,8 @@ class MainActivity : Activity() {
     }
 
     private fun readMoviesFromAssets(): List<Movie> {
-        val jsonString = try {
-            assets.open("movies.json").bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return emptyList()
-        }
+        val inputStream = resources.openRawResource(R.raw.movies)
+        val jsonString = inputStream.bufferedReader().use(BufferedReader::readText)
 
         val movies = mutableListOf<Movie>()
         val jsonArray = JSONArray(jsonString)
