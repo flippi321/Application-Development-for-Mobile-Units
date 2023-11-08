@@ -1,0 +1,66 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFEBEE"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="34sp"
+        android:textColor="#6200EA"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textSize="20sp"
+        android:textColor="#3700B3"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info"
+        app:layout_constraintBottom_toTopOf="@+id/editTextInput"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/type_a_message"
+        android:padding="10dp"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:backgroundTint="#673AB7"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextInput"
+        app:layout_constraintTop_toTopOf="@+id/editTextInput" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
