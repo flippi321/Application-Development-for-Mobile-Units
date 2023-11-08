@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Client</string>
+    <string name="app_name">Chriss Klient-App</string>
+    <string name="type_a_message">Send en melding til Server…</string>
+    <string name="send">Send</string>
 </resources>
