@@ -11,6 +11,6 @@ class MainActivity : Activity() {
         val textView = findViewById<TextView>(R.id.textView)
 
         // Start the server class
-        AppServer(this, textView).start()
+        AppServer(textView).start()
     }
 }
