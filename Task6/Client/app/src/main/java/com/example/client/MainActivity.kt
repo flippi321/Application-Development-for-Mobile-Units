@@ -1,46 +1,37 @@
 package com.example.client
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.client.ui.theme.ClientTheme
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
+    private lateinit var client: Client
+    private lateinit var buttonSend: Button
+    private lateinit var editTextInput: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ClientTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+        setContentView(R.layout.activity_main)
+
+        val textView = findViewById<TextView>(R.id.textView)
+        editTextInput = findViewById(R.id.editTextInput)
+        buttonSend = findViewById(R.id.buttonSend)
+
+        // Initialize the client
+        client = Client(textView)
+
+        // Set up the button event listener
+        buttonSend.setOnClickListener {
+            val message = editTextInput.text.toString()
+            if (message.isNotBlank()) {
+                client.sendMessageToClient(message)
+                editTextInput.text.clear()
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ClientTheme {
-        Greeting("Android")
+        // Start the server
+        client.start()
     }
 }
