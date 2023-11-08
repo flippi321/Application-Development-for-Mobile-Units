@@ -19,6 +19,9 @@ class MainActivity : Activity() {
         // Read and parse the movies from the JSON file
         val moviesList = readMoviesFromAssets()
 
+        // After reading the movies, write them to the internal storage as JSON
+        writeMoviesToJsonFile(moviesList)
+
         // Adapter to display the movies in the ListView
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, moviesList)
         listView.adapter = adapter
@@ -43,5 +46,22 @@ class MainActivity : Activity() {
         }
 
         return movies
+    }
+
+    private fun writeMoviesToJsonFile(movies: List<Movie>) {
+        val jsonArray = JSONArray()
+        movies.forEach { movie ->
+            jsonArray.put(movie.toJson())
+        }
+
+        val jsonString = jsonArray.toString()
+
+        try {
+            val fileOutputStream = openFileOutput("new_movies.json", MODE_PRIVATE)
+            fileOutputStream.write(jsonString.toByteArray())
+            fileOutputStream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 }
