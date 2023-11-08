@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import org.json.JSONArray
+import java.io.IOException
 
 class MainActivity : Activity() {
 
@@ -13,15 +15,36 @@ class MainActivity : Activity() {
 
         val listView = findViewById<ListView>(R.id.listView)
 
-        // Sample list of movies
-        val moviesList = listOf(
-            Movie("Inception", "Christopher Nolan", listOf("Leonardo DiCaprio", "Joseph Gordon-Levitt")),
-            Movie("The Matrix", "Lana Wachowski, Lilly Wachowski", listOf("Keanu Reeves", "Laurence Fishburne")),
-            // Add more movies here
-        )
+        // Read and parse the movies from the JSON file
+        val moviesList = readMoviesFromAssets()
 
         // Adapter to display the movies in the ListView
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, moviesList)
         listView.adapter = adapter
+    }
+
+    private fun readMoviesFromAssets(): List<Movie> {
+        val jsonString = try {
+            assets.open("movies.json").bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return emptyList()
+        }
+
+        val movies = mutableListOf<Movie>()
+        val jsonArray = JSONArray(jsonString)
+        for (i in 0 until jsonArray.length()) {
+            val jsonObject = jsonArray.getJSONObject(i)
+            val name = jsonObject.getString("name")
+            val director = jsonObject.getString("director")
+            val actorsJsonArray = jsonObject.getJSONArray("actors")
+            val actorsList = mutableListOf<String>()
+            for (j in 0 until actorsJsonArray.length()) {
+                actorsList.add(actorsJsonArray.getString(j))
+            }
+            movies.add(Movie(name, director, actorsList))
+        }
+
+        return movies
     }
 }
