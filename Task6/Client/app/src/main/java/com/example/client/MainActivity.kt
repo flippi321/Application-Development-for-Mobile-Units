@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : Activity() {
-    private lateinit var client: Client
+    private lateinit var client: AppClient
     private lateinit var buttonSend: Button
     private lateinit var editTextInput: EditText
 
@@ -20,13 +20,13 @@ class MainActivity : Activity() {
         buttonSend = findViewById(R.id.buttonSend)
 
         // Initialize the client
-        client = Client(textView)
+        client = AppClient(textView)
 
         // Set up the button event listener
         buttonSend.setOnClickListener {
             val message = editTextInput.text.toString()
             if (message.isNotBlank()) {
-                client.sendMessageToClient(message)
+                client.sendMessageToServer(message)
                 editTextInput.text.clear()
             }
         }
