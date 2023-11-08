@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/sort_none"
+        android:title="@string/none"/>
+    <item android:id="@+id/sort_keanu_reeves"
+        android:title="@string/keanu_reeves_has_a_role"/>
+    <item android:id="@+id/sort_christopher_nolan"
+        android:title="@string/directed_by_christopher_nolan"/>
+</menu>
