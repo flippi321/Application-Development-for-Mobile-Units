@@ -5,4 +5,7 @@
     <string name="directed_by_christopher_nolan">Directed by Christopher Nolan</string>
     <string name="sort">Sort</string>
     <string name="background">Background</string>
+    <string name="white">White</string>
+    <string name="yellow">Yellow</string>
+    <string name="red">Red</string>
 </resources>
