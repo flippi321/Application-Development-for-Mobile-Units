@@ -31,7 +31,7 @@ class MainActivity : Activity() {
             }
         }
 
-        // Start the server
+        // Start the client
         client.start()
     }
 }
