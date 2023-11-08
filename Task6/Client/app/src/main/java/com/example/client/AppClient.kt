@@ -5,7 +5,7 @@ import kotlinx.coroutines.*
 import java.io.PrintWriter
 import java.net.Socket
 
-class AppClient(private val textView: TextView, private val serverIp: String = "10.0.2.2", private val PORT: Int = 12345) {
+class AppClient(private val textView: TextView, private val serverIp: String = "10.0.2.16", private val PORT: Int = 12345) {
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private var serverSocket: Socket? = null
