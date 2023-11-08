@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Task7</string>
+    <string name="none">All</string>
+    <string name="keanu_reeves_has_a_role">Keanu Reeves has a role</string>
+    <string name="directed_by_christopher_nolan">Directed by Christopher Nolan</string>
+    <string name="sort">Sort</string>
 </resources>
