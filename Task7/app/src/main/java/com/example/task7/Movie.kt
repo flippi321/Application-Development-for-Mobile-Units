@@ -8,6 +8,13 @@ data class Movie(
     val director: String,
     val actors: List<String>
 ) {
+    fun hasActor(actorName: String): Boolean {
+        return actors.contains(actorName)
+    }
+
+    fun isDirectedBy(directorName: String): Boolean {
+        return director.equals(directorName, ignoreCase = true)
+    }
     fun toJson(): JSONObject {
         val jsonObject = JSONObject()
         jsonObject.put("name", name)
