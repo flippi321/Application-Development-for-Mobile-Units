@@ -31,8 +31,7 @@ class AppServer(private val textView: TextView, private val PORT: Int = 12345) {
             try {
                 ui = "Starting Server ..."
                 val serverSocket = ServerSocket(PORT)
-                val ip = getLocalIpAddress()
-                ui = "ServerSocket created on $ip, waiting for a client to connect..."
+                ui = "ServerSocket created, waiting for a client to connect..."
 
                 while (true) {
                     val client = serverSocket.accept()
@@ -42,29 +41,6 @@ class AppServer(private val textView: TextView, private val PORT: Int = 12345) {
                 ui = e.message
             }
         }
-    }
-
-    // Function to get the local IP address
-    private fun getLocalIpAddress(): String {
-        try {
-            val networkInterfaces = Collections.list(NetworkInterface.getNetworkInterfaces())
-            for (intf in networkInterfaces) {
-                val addrs = Collections.list(intf.inetAddresses)
-                for (addr in addrs) {
-                    if (!addr.isLoopbackAddress) {
-                        val sAddr = addr.hostAddress
-                        // We prefer IPv4 addresses
-                        val isIPv4 = sAddr.indexOf(':') < 0
-                        if (isIPv4) {
-                            return sAddr
-                        }
-                    }
-                }
-            }
-        } catch (ex: Exception) {
-            // Handle exception
-        }
-        return "Unavailable"
     }
 
     private fun handleClient(client: Socket) {
