@@ -28,6 +28,6 @@ data class Movie(
     }
 
     override fun toString(): String {
-        return "Movie(name='$name', director='$director', actors=${actors.joinToString(", ")})"
+        return "$name\n Director: $director \n\nActors:\n${actors.joinToString("\n")}"
     }
 }
