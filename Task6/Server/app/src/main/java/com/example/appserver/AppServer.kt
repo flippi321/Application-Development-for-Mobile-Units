@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.PrintWriter
+import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.ServerSocket
 import java.net.Socket
@@ -31,7 +32,8 @@ class AppServer(private val textView: TextView, private val PORT: Int = 12345) {
             try {
                 ui = "Starting Server ..."
                 val serverSocket = ServerSocket(PORT)
-                ui = "ServerSocket created, waiting for a client to connect..."
+                val ip = getLocalIpAddress();
+                ui = "ServerSocket created on $ip, waiting for a client to connect..."
 
                 while (true) {
                     val client = serverSocket.accept()
@@ -41,6 +43,29 @@ class AppServer(private val textView: TextView, private val PORT: Int = 12345) {
                 ui = e.message
             }
         }
+    }
+
+    // Function to get the local IP address
+    private fun getLocalIpAddress(): String {
+        try {
+            val networkInterfaces = Collections.list(NetworkInterface.getNetworkInterfaces())
+            for (intf in networkInterfaces) {
+                val addrs = Collections.list(intf.inetAddresses)
+                for (addr in addrs) {
+                    if (!addr.isLoopbackAddress) {
+                        val sAddr = addr.hostAddress
+                        // We prefer IPv4 addresses
+                        val isIPv4 = sAddr.indexOf(':') < 0
+                        if (isIPv4) {
+                            return sAddr
+                        }
+                    }
+                }
+            }
+        } catch (ex: Exception) {
+            // Handle exception
+        }
+        return "Unavailable"
     }
 
     private fun handleClient(client: Socket) {
